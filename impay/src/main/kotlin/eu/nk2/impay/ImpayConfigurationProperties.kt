@@ -1,6 +1,6 @@
 package eu.nk2.impay
 
-import eu.nk2.donate.utils.NoArgsConstructor
+import eu.nk2.impay.utils.NoArgsConstructor
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.stereotype.Component
