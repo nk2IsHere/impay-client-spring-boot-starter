@@ -11,11 +11,11 @@ sealed class ImpayError {
 
     companion object {
 
-        val serializer = jsonSerializer<ImpayError> { src, context -> when(src) {
+        val serializer = jsonSerializer<ImpayError> { src, _ -> when(src) {
             is UnknownImpayError -> src.code.toJson()
         } }
 
-        val deserializer = jsonDeserializer { src, context -> when(src.int) {
+        val deserializer = jsonDeserializer { src, _ -> when(src.int) {
             else -> UnknownImpayError(src.int)
         } }
     }

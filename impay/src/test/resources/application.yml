@@ -1,3 +1,9 @@
 logging:
   level:
     eu.nk2.impay: debug
+
+impay:
+  attempts: 5
+  timeout-millis: 5000
+  credentials-mode: debug
+  host-mode: debug

@@ -3,11 +3,12 @@ import java.text.SimpleDateFormat
 plugins {
     id 'org.springframework.boot' version '2.3.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-    id 'org.jetbrains.kotlin.plugin.spring' version '1.4.20'
-    id 'org.jetbrains.kotlin.jvm' version '1.4.20'
-    id 'org.jetbrains.kotlin.plugin.noarg' version '1.4.20'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.4.31'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.31'
+    id 'org.jetbrains.kotlin.plugin.noarg' version '1.4.31'
     id 'maven-publish'
     id 'com.jfrog.artifactory' version '4.16.0'
+    id 'org.jetbrains.kotlin.kapt' version '1.4.31'
 }
 
 repositories {
@@ -47,6 +48,7 @@ configure(buildProjects()) {
     apply plugin: 'org.jetbrains.kotlin.plugin.spring'
     apply plugin: 'org.jetbrains.kotlin.jvm'
     apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
+    apply plugin: 'org.jetbrains.kotlin.kapt'
 
     group = "eu.nk2"
     version = gitTag().split("-").first() // Publisher does not support versions with -

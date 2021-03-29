@@ -13,13 +13,13 @@ sealed class ImpayCardType {
 
     companion object {
 
-        val serializer = jsonSerializer<ImpayCardType> { src, context -> when(src) {
+        val serializer = jsonSerializer<ImpayCardType> { src, _ -> when(src) {
             is InCardType -> 0.toJson()
             is OutCardType -> 1.toJson()
             is UnknownCardType -> src.type.toJson()
         } }
 
-        val deserializer = jsonDeserializer { src, context -> when(src.int) {
+        val deserializer = jsonDeserializer { src, _ -> when(src.int) {
             0 -> InCardType
             1 -> OutCardType
             else -> UnknownCardType(type = src.int)
