@@ -1,12 +1,3 @@
 logging:
   level:
-    eu.nk2.intercom: debug
-
-intercom:
-  starter-mode: CLIENT_SERVER
-  timeout-millis: 5000
-  rabbit-queue-prefix: "ic-test-"
-
-spring:
-  rabbitmq:
-    host: localhost
+    eu.nk2.impay: debug
