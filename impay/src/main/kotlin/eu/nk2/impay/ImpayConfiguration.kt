@@ -10,6 +10,7 @@ import eu.nk2.impay.common.ImpayError
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.*
 import org.springframework.core.Ordered
@@ -93,7 +94,10 @@ class ImpayConfiguration {
     fun impayApiCredentials(
         @Autowired properties: ImpayConfigurationProperties
     ): ImpayApiCredentials = when(properties.credentialsMode) {
-        ImpayConfigurationProperties.ImpayConfigurationPropertiesCredentialsMode.DEBUG -> ImpayApiCredentials.ImpayApiDemoCredentials
+        ImpayConfigurationProperties.ImpayConfigurationPropertiesCredentialsMode.DEBUG -> ImpayApiCredentials.ImpayApiDebugCredentials(
+            id = properties.merchantDebugId ?: error("impay.merchantDebugId is required in application.properties"),
+            token = properties.merchantDebugToken ?: error("impay.merchantDebugToken is required in application.properties")
+        )
         ImpayConfigurationProperties.ImpayConfigurationPropertiesCredentialsMode.PRODUCTION -> ImpayApiCredentials.ImpayApiProductionCredentials(
             id = properties.merchantId ?: error("impay.merchantId is required in application.properties"),
             token = properties.merchantToken ?: error("impay.merchantToken is required in application.properties")
@@ -158,6 +162,12 @@ class ImpayConfiguration {
 
     @Bean @Qualifier(IMPAY_WEB_CALLBACK_API_BEAN_ID)
     @Order(Ordered.LOWEST_PRECEDENCE)
+    @ConditionalOnProperty(
+        value = ["callbackEnabled", "callback-enabled", "callback_enabled", "callbackenabled"],
+        prefix = IMPAY_PROPERTIES_PREFIX,
+        havingValue = "true",
+        matchIfMissing = true
+    )
     @Conditional(ImpayWebCallbackApiBeanExistsCondition::class)
     fun impayCallbackApi(
         @Autowired properties: ImpayConfigurationProperties,

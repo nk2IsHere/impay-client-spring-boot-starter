@@ -1,19 +1,19 @@
 package eu.nk2.impay.utils
 
 import java.security.MessageDigest
-import javax.xml.bind.DatatypeConverter
 
+val String.sha1: String
+    get() {
+        val bytes = MessageDigest.getInstance("SHA-1").digest(this.toByteArray())
+        return bytes.joinToString("") {
+            "%02x".format(it)
+        }
+    }
 
-fun String.sha1(): String {
-    val msdDigest = MessageDigest.getInstance("SHA-1")
-    msdDigest.update(this.toByteArray(), 0, this.length)
-
-    return DatatypeConverter.printHexBinary(msdDigest.digest())
-}
-
-fun String.md5(): String {
-    val msdDigest = MessageDigest.getInstance("MD5")
-    msdDigest.update(this.toByteArray(), 0, this.length)
-
-    return DatatypeConverter.printHexBinary(msdDigest.digest())
-}
+val String.md5: String
+    get() {
+        val bytes = MessageDigest.getInstance("MD5").digest(this.toByteArray())
+        return bytes.joinToString("") {
+            "%02x".format(it)
+        }
+    }

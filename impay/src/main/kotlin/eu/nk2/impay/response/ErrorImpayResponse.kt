@@ -1,11 +1,9 @@
 package eu.nk2.impay.response
 
 import eu.nk2.impay.common.AbstractImpayResponse
-import eu.nk2.impay.common.ImpayCard
 import eu.nk2.impay.common.ImpayError
 
-data class CardGetImpayResponse(
-    val card: ImpayCard,
+data class ErrorImpayResponse(
     override val status: Int,
     override val message: String?,
     override val name: String?,

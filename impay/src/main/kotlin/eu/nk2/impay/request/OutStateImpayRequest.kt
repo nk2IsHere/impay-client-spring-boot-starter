@@ -5,7 +5,7 @@ import eu.nk2.impay.ImpayApiMethod
 import eu.nk2.impay.common.AbstractImpayRequest
 import eu.nk2.impay.response.OutStateImpayResponse
 
-class OutStateImpayRequest(
+data class OutStateImpayRequest(
     val id: Int,
 ): AbstractImpayRequest<OutStateImpayResponse>(OutStateImpayResponse::class, ImpayApiMethod("/out/state", ImpayApiFlavour.ImpayApiV1Flavour)) {
 

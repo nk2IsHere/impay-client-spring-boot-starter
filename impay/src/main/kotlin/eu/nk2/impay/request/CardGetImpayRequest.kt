@@ -6,7 +6,7 @@ import eu.nk2.impay.common.AbstractImpayRequest
 import eu.nk2.impay.common.ImpayCardType
 import eu.nk2.impay.response.CardGetImpayResponse
 
-class CardGetImpayRequest(
+data class CardGetImpayRequest(
     val id: Int,
     val type: ImpayCardType,
 ): AbstractImpayRequest<CardGetImpayResponse>(CardGetImpayResponse::class, ImpayApiMethod("/card/get", ImpayApiFlavour.ImpayApiV1Flavour)) {

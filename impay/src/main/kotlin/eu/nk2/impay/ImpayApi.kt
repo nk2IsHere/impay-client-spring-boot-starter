@@ -3,11 +3,12 @@ package eu.nk2.impay
 
 sealed class ImpayApiHost(
     val scheme: String,
-    val host: String
+    val host: String,
+    val port: Int = -1
 ) {
 
     object ImpayApiProductionHost: ImpayApiHost("https", "api.impay.ru")
-    object ImpayApiDebugHost: ImpayApiHost("https", "test.impay.ru")
+    object ImpayApiDebugHost: ImpayApiHost("https", "test.impay.ru", 806)
 }
 
 sealed class ImpayApiCredentials(
@@ -23,23 +24,28 @@ sealed class ImpayApiCredentials(
         token = token
     )
 
-    object ImpayApiDemoCredentials: ImpayApiCredentials(
-        id = TODO(),
-        token = TODO(),
+    class ImpayApiDebugCredentials(
+        id: String,
+        token: String,
+    ): ImpayApiCredentials(
+        id = id,
+        token = token
     )
 }
 
 sealed class ImpayApiFlavour(
-    val path: String,
+    val path: List<String>,
 ) {
 
-    object ImpayApiV1Flavour: ImpayApiFlavour(path = "/v1")
+    object ImpayApiV1Flavour: ImpayApiFlavour(path = listOf("v1"))
 }
 
 data class ImpayApiMethod(
-    val path: String,
+    val path: List<String>,
     val flavour: ImpayApiFlavour
-)
+) {
+    constructor(path: String, flavour: ImpayApiFlavour): this(path = path.split('/'), flavour)
+}
 
 data class ImpayApi(
     val host: ImpayApiHost,

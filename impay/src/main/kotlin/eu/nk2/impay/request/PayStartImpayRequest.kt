@@ -7,7 +7,7 @@ import eu.nk2.impay.common.AbstractImpayRequest
 import eu.nk2.impay.response.PayStartImpayResponse
 import java.math.BigDecimal
 
-class PayStartImpayRequest(
+data class PayStartImpayRequest(
     val amount: BigDecimal,
     @JsonProperty("document_id") val documentId: String,
     @JsonProperty("fullname") val fullName: String,

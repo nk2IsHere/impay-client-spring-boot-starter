@@ -3,7 +3,9 @@ logging:
     eu.nk2.impay: debug
 
 impay:
-  attempts: 5
-  timeout-millis: 5000
+  attempts: 1
+  timeout-millis: 1000
   credentials-mode: debug
   host-mode: debug
+  merchant-debug-id: 26
+  merchant-debug-token: gHGp0kry8

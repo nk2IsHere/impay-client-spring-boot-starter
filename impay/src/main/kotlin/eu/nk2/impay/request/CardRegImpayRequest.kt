@@ -7,7 +7,7 @@ import eu.nk2.impay.common.AbstractImpayRequest
 import eu.nk2.impay.common.ImpayCardType
 import eu.nk2.impay.response.CardRegImpayResponse
 
-class CardRegImpayRequest(
+data class CardRegImpayRequest(
     val type: ImpayCardType,
     @JsonProperty("extid") val extId: String,
     val timeout: Int,

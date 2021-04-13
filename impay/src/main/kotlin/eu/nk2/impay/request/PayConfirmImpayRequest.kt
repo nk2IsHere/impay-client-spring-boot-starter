@@ -6,7 +6,7 @@ import eu.nk2.impay.ImpayApiMethod
 import eu.nk2.impay.common.AbstractImpayRequest
 import eu.nk2.impay.response.PayConfirmImpayResponse
 
-class PayConfirmImpayRequest(
+data class PayConfirmImpayRequest(
     val id: Int,
     @JsonProperty("pares") val pares: String? = null,
     @JsonProperty("md") val md: String? = null,

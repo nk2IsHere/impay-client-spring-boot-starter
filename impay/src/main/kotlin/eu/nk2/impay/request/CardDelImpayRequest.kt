@@ -5,7 +5,7 @@ import eu.nk2.impay.ImpayApiMethod
 import eu.nk2.impay.common.AbstractImpayRequest
 import eu.nk2.impay.response.CardDelImpayResponse
 
-class CardDelImpayRequest(
+data class CardDelImpayRequest(
     val card: Int,
 ): AbstractImpayRequest<CardDelImpayResponse>(CardDelImpayResponse::class, ImpayApiMethod("/card/del", ImpayApiFlavour.ImpayApiV1Flavour)) {
 

@@ -13,5 +13,5 @@ data class ResultCallbackImpayRequest(
 ) {
 
     val isValid: Boolean
-        get() = (extId + id + amount + status).md5() == key
+        get() = (extId + id + amount + status).md5 == key
 }

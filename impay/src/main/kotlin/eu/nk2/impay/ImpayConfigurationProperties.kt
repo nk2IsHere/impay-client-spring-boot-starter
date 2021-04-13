@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 import org.springframework.stereotype.Component
 
-private const val IMPAY_PROPERTIES_PREFIX = "impay"
+const val IMPAY_PROPERTIES_PREFIX = "impay"
 
 @NoArgsConstructor
 @ConstructorBinding
@@ -17,8 +17,11 @@ data class ImpayConfigurationProperties(
     val merchantId: String?,
     val merchantToken: String?,
     val merchantCallbackToken: String?,
+    val merchantDebugId: String?,
+    val merchantDebugToken: String?,
     val timeoutMillis: Long = 5000L,
     val attempts: Long = 5,
+    val callbackEnabled: Boolean = true,
     val callbackResultPath: String = "/impay/callback/result",
     val callbackCheckPath: String = "/impay/callback/check",
 ) {

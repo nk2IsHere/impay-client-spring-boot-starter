@@ -3,15 +3,10 @@ package eu.nk2.impay.response
 import eu.nk2.impay.common.AbstractImpayResponse
 import eu.nk2.impay.common.ImpayError
 
-class OutPayCardImpayResponse(
+data class OutPayCardImpayResponse(
     val id: Int,
-    status: Int,
-    message: String?,
-    name: String?,
-    code: ImpayError?
-): AbstractImpayResponse(
-    status = status,
-    message = message,
-    name = name,
-    code = code
-)
+    override val status: Int,
+    override val message: String?,
+    override val name: String?,
+    override val code: ImpayError?
+): AbstractImpayResponse()

@@ -6,7 +6,7 @@ import eu.nk2.impay.ImpayApiMethod
 import eu.nk2.impay.common.AbstractImpayRequest
 import eu.nk2.impay.response.PayAutoImpayResponse
 
-class PayAuthImpayRequest(
+data class PayAuthImpayRequest(
     val status: Int,
     val id: Int,
     @JsonProperty("threedsservertransid") val threeDsServerTransId: String?,

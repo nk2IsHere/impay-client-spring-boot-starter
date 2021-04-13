@@ -7,7 +7,7 @@ import eu.nk2.impay.common.AbstractImpayRequest
 import eu.nk2.impay.response.PayAutoImpayResponse
 import java.math.BigDecimal
 
-class OutPayCardImpayRequest(
+data class OutPayCardImpayRequest(
     val card: Int? = null,
     @JsonProperty("cardnum") val cardNumber: String? = null,
     val amount: BigDecimal,
